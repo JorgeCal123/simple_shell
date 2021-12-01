@@ -65,7 +65,11 @@ int main(__attribute__((unused))int argc, __attribute__((unused))char **argv, ch
 }
 
 
-
+/**
+ * linkedList_to_doublePointer - Description
+ * @head: Description
+ * Return: Description
+ */
 char **linkedList_to_doublePointer(args_t **head)
 {
 	int i;

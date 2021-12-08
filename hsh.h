@@ -39,5 +39,6 @@ char *_strcat(char *s1, char *s2);
 int _strlen(char *dup);
 char *_strdup(char *src);
 
-
+/*more_function.c*/
+int launch(args_t *dir, char **env);
 #endif

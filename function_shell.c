@@ -94,7 +94,6 @@ int _execute(args_t *dir, char **env, int type)
 	int state_execve;
 	int state_song;
 	args_t *list_slip;
-	char **path = NULL;
 
 	state_fork = fork();
 	if (state_fork == -1)
@@ -106,24 +105,22 @@ int _execute(args_t *dir, char **env, int type)
 			while (dir != NULL)
 			{
 				list_slip = split_args(dir->arg);
-				path = linkedList_to_doublePointer(&list_slip);
-				state_execve = execve(path[0], path, env);
+				state_execve = launch(list_slip, env);
 				dir = dir->next;
 			}
 			if (state_execve == -1)
 			{
-				perror("error");
+				perror("./shell:");
 				return (-1);
 			}
 		}
 		else
 		{
 			list_slip = dir;
-			path = linkedList_to_doublePointer(&list_slip);
-			state_execve = execve(path[0], path, env);
+			state_execve = launch(list_slip, env);
 			if (state_execve == -1)
 			{
-				perror("error");
+				perror("./shell:");
 				return (-1);
 			}
 		}
@@ -131,8 +128,6 @@ int _execute(args_t *dir, char **env, int type)
 	}
 	else
 	wait(&state_song);
-
-	free(path);
-
+	(void) env;
 	return (0);
 }

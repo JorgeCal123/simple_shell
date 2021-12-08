@@ -22,9 +22,18 @@ typedef struct args_s
 /*list_cmd.c*/
 size_t size_list(const args_t *h);
 size_t print_list(const args_t *h);
-args_t *add_node(args_t **head, char* arg);
-
-/*main.c*/
+args_t *add(args_t **head, char *arg);
 char **linkedList_to_doublePointer(args_t **head);
+
+/*function_shell.c*/
+char *read_Line();
+int is_directory(char *line);
+args_t *splid_args(char *args);
+args_t *splid_path(char *path, char *lin);
+int _execute(args_t *dir, char **env, int type)
+
+
+/*str.c*/
+char *_strcat(char *s1, char *s2);
 
 #endif

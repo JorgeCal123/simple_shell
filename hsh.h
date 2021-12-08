@@ -8,13 +8,18 @@
 #include <sys/wait.h>
 
 /*structure main.c*/
+/**
+ * struct args_s - contain all arguments
+ * @args: arguments and command
+ * @next: value of next structure
+ */
 typedef struct args_s
 {
     char* arg;
     struct args_s *next;
 } args_t;
 
-/*list.c*/
+/*list_cmd.c*/
 size_t size_list(const args_t *h);
 size_t print_list(const args_t *h);
 args_t *add_node(args_t **head, char* arg);

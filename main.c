@@ -7,91 +7,28 @@
  * Return: Description
  */
 
-int main(__attribute__((unused))int argc, __attribute__((unused))char **argv, char **env)
+int main(int argc, char **argv, char **env)
 {
-	int tty = 1;
-
+	char *path = getenv("PATH");
 	char *line;
+	args_t *list_path;
+
 	char *cpy_line;
-	size_t lineSize = 0;
-
-	char *slip;
-	args_t *list_slip = NULL; 
-
-	pid_t state_fork;
-	int state_execve;
-	int state_song;
-
-	char **path = NULL;
-
-
-	isatty(STDIN_FILENO) == 0 ? tty = 0 : tty;
+	(void)argc;
+	(void)argv;
 
 	while (1)
 	{
-		/*Escribe y lee las lineas de entrada*/
-		write(STDOUT_FILENO, "My_Shell_$",10);
-		getline(&line,&lineSize, stdin);
+		line = read_Line();
 		cpy_line = strdup(line);
 
-		/*separa la linea por espacios*/
-		while ((slip = strtok(cpy_line, " \t\n")))
-		{
-			 /*   printf("%s\n",slip);*/
-			add_node(&list_slip,slip);
-			cpy_line = NULL;
-		}
-		print_list(list_slip);
-
-		/*si es 0 = hijo si es 1 = Padre y si es -1 = error*/
-		state_fork = fork();
-		if(state_fork == -1)
-			return -1;
-		else if(state_fork == 0)
-		{
-			/*doble puntero*/
-			path = linkedList_to_doublePointer(&list_slip);
-			state_execve = execve(path[0], path, env);
-			if (state_execve == -1)
-				return -1;
-		}
+		if (is_directory(cpy_line) == 1)
+			list_path = split_path(path,cpy_line);
 		else
-		{
-			wait(&state_song);
-		}
-		list_slip = NULL;
+			list_path = split_args(cpy_line);
+
+		_execute(list_path, env, is_directory(cpy_line));
 	}
-	return 0;
-}
+	return (0);
 
-
-/**
- * linkedList_to_doublePointer - Description
- * @head: Description
- * Return: Description
- */
-char **linkedList_to_doublePointer(args_t **head)
-{
-	int i;
-	args_t *h = *head;
-	char **arguments;
-
-	/*cuenta la cantidad de nodos que hay en la lista*/
-	  size_t size = 0;
-
-	  while (h != NULL)
-	{
-		printf("%s\n", h->arg);
-		h = h->next;
-		size++;
-	}
-
-	arguments = malloc( (size + 1) * sizeof(char *));
-	h = *head;
-	for (i = 0; h; i++, h = h->next)
-		arguments[i] = h->arg;
-
-	arguments[i] = NULL;
-
-	return (arguments);
 }

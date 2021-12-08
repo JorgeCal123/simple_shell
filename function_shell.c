@@ -32,17 +32,17 @@ args_t *split_args(char *args)
 	return (list_slip);
 }
 /**
- * splid_path - separete the arguments from path
+ * split_path - separete the arguments from path
  * @path: contain all directions from path
  * @lin: is the command to execute
  * Return: structure type args_t with arguments from path
  */
-args_t *splid_path(char *path, char *lin)
+args_t *split_path(char *path, char *lin)
 {
 	char *line = strdup(path);
 	char *slip;
 	char *node_dir;
-	int dir;
+
 	args_t *list_slip = NULL;
 
 	while ((slip = strtok(line, ":")))
@@ -92,33 +92,34 @@ int _execute(args_t *dir, char **env, int type)
 	char **path = NULL;
 
 	state_fork = fork();
-	if (state_fork == -1)
-		return (-1);
-	else if (state_fork == 0)
+	if(state_fork == -1)
+		return -1;
+	else if(state_fork == 0)
 	{
 		if (type == 1)
 		{
-			while (dir != NULL)
+			while(dir != NULL)
 			{
-				list_slip = splid_args(dir->arg);
+				list_slip = split_args(dir->arg); 
 				path = linkedList_to_doublePointer(&list_slip);
 				state_execve = execve(path[0], path, env);
 				dir = dir->next;
 			}
 			if (state_execve == -1)
-				return (-1);
+				return -1;
 		}
 		else
 		{
+
+		}
 			list_slip = dir;
 			path = linkedList_to_doublePointer(&list_slip);
 			state_execve = execve(path[0], path, env);
-
 			if (state_execve == -1)
-				return (-1);
-		}
+				return -1;
 	}
 	else
-		wait(&state_song);
+	wait(&state_song);
+
 	return (0);
 }

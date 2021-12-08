@@ -6,6 +6,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <sys/wait.h>
+#include <string.h>
 
 /*structure main.c*/
 /**
@@ -28,9 +29,9 @@ char **linkedList_to_doublePointer(args_t **head);
 /*function_shell.c*/
 char *read_Line();
 int is_directory(char *line);
-args_t *splid_args(char *args);
-args_t *splid_path(char *path, char *lin);
-int _execute(args_t *dir, char **env, int type)
+args_t *split_args(char *args);
+args_t *split_path(char *path, char *lin);
+int _execute(args_t *dir, char **env, int type);
 
 
 /*str.c*/

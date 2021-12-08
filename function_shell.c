@@ -111,7 +111,10 @@ int _execute(args_t *dir, char **env, int type)
 				dir = dir->next;
 			}
 			if (state_execve == -1)
+			{
+				perror("error");
 				return (-1);
+			}
 		}
 		else
 		{
@@ -119,8 +122,12 @@ int _execute(args_t *dir, char **env, int type)
 			path = linkedList_to_doublePointer(&list_slip);
 			state_execve = execve(path[0], path, env);
 			if (state_execve == -1)
+			{
+				perror("error");
 				return (-1);
+			}
 		}
+
 	}
 	else
 	wait(&state_song);

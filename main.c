@@ -20,7 +20,7 @@ int main(int argc, char **argv, char **env)
 	while (1)
 	{
 		line = read_Line();
-		cpy_line = strdup(line);
+		cpy_line = _strdup(line);
 
 		if (is_directory(cpy_line) == 1)
 			list_path = split_path(path, cpy_line);

@@ -36,3 +36,41 @@ char *_strcat(char *s1, char *s2)
 		return (NULL);
 }
 
+/**
+ * _strdup - Copies a string pointed to by src, including the
+ * terminating null byte
+ * @src: The source string to copy.
+ * Return: pointer destination dest.
+ */
+char *_strdup(char *src)
+{
+	int i = 0;
+	char *dest;
+
+	dest = malloc(sizeof(char) * _strlen(src));
+	if (!dest)
+	{
+		fprintf(stderr, "error: allocation error");
+		exit(EXIT_FAILURE);
+	}
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+/**
+ * _strlen - function that returns the length of a string.
+ * @dup: Pointers or arrays
+ * Return: length of a string.
+ */
+int _strlen(char *dup)
+{
+	int cant = 0;
+
+	while (dup[cant] != '\0')
+		cant++;
+	return (cant);
+}

@@ -6,7 +6,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <sys/wait.h>
-#include <string.h>
+
 
 /*structure main.c*/
 /**
@@ -36,5 +36,8 @@ int _execute(args_t *dir, char **env, int type);
 
 /*str.c*/
 char *_strcat(char *s1, char *s2);
+int _strlen(char *dup);
+char *_strdup(char *src);
+
 
 #endif

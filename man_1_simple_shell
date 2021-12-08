@@ -1,0 +1,78 @@
+.TH hsh 1 "December 7, 2021" "1.0" "hsh General Commands Manual"
+
+.SH NAME
+
+.B simple_shell - hsh
+- command line interpreter or shell
+
+
+.SH SYNOPSIS
+
+.B  ./hsh
+.I (no options yet)
+
+
+
+.SH DESCRIPTION
+
+The simple_shell is a our own command line interpreter, or shell. This shell is intentionally minimalistic, yet includes the basic functionality of a traditional Unix-like command line interface. simple_shell is desgined to run only on the linux environment.
+
+
+.SH OVERVIEW
+
+Reading from either the terminal or files, simple_shell interprets and executes commands.
+
+
+.SH INVOCATION
+
+Compile simple_shell with the GNU Compiler Collection, preferably using gcc plus the below specified flags, as per this example (note the use of the * wildcard which enables all related .c files to be compiled concurrently):
+.P
+.RS
+.B $ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+.P
+.RE
+simple_shell can be run in interactive mode by entering the below command on the command line followd by "enter." Note that the prompt ('My_Shell_$') will appear and you will then be in interactive mode and able to enter commands followed by "enter." 
+.P
+.RS
+.B $ ./hsh
+.P
+
+.SH EXECUTABLES
+
+Example of executables:
+.IP
+.br
+.\&
+.RS
+\&$ echo "Example of executables"
+.br
+\&"Example of executables"
+.br
+\&$
+
+
+.SH BUILTINS
+
+The following builtin commands are supported:
+
+.IT
+
+
+Example of builtin command:
+.IP
+.br
+\&PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+
+.SH BUGS
+There some bugs at this writing (December 7, 2021).
+Please report any issues to the authors.
+
+.SH AUTHOR
+
+Jorge Calambas <j.calambas@hotmail.com>
+
+Andres Catano <andres.catano@holbertonschool.com>
+
+.SH SEE ALSO
+sh

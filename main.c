@@ -28,6 +28,9 @@ int main(int argc, char **argv, char **env)
 			list_path = split_args(cpy_line);
 
 		_execute(list_path, env, is_directory(cpy_line));
+	free(line);
+        free(list_path);
+        free(cpy_line);
 	}
 	return (0);
 

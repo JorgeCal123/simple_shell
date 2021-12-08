@@ -125,5 +125,7 @@ int _execute(args_t *dir, char **env, int type)
 	else
 	wait(&state_song);
 
+	free(path);
+
 	return (0);
 }

@@ -8,8 +8,13 @@ char *read_Line()
 	char *line;
 	size_t lineSize = 0;
 
-	write(STDOUT_FILENO, "My_Shell_$", 10);
-	getline(&line, &lineSize, stdin);
+	write(STDOUT_FILENO, "My_Shell_$ ", 10);
+
+	if (getline(&line, &lineSize, stdin) == EOF)
+	{
+		write(1, "\n", 1);
+		exit(0);
+	}
 	return (line);
 }
 /**
@@ -92,15 +97,15 @@ int _execute(args_t *dir, char **env, int type)
 	char **path = NULL;
 
 	state_fork = fork();
-	if(state_fork == -1)
-		return -1;
-	else if(state_fork == 0)
+	if (state_fork == -1)
+		return (-1);
+	else if (state_fork == 0)
 	{
 		if (type == 1)
 		{
-			while(dir != NULL)
+			while (dir != NULL)
 			{
-				list_slip = split_args(dir->arg); 
+				list_slip = split_args(dir->arg);
 				path = linkedList_to_doublePointer(&list_slip);
 				state_execve = execve(path[0], path, env);
 				dir = dir->next;
@@ -110,13 +115,12 @@ int _execute(args_t *dir, char **env, int type)
 		}
 		else
 		{
-
-		}
 			list_slip = dir;
 			path = linkedList_to_doublePointer(&list_slip);
 			state_execve = execve(path[0], path, env);
 			if (state_execve == -1)
 				return -1;
+		}
 	}
 	else
 	wait(&state_song);

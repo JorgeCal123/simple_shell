@@ -70,7 +70,11 @@ size_t size_list(const args_t *h)
 	}
 	return (elements);
 }
-
+/**
+ * linkedList_to_doublePointer - transform a linked List to double Pointer
+ * @head: linkedList
+ * Return: double pointer
+ */
 char **linkedList_to_doublePointer(args_t **head)
 {
 	int i;

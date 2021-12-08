@@ -11,13 +11,13 @@
 /*structure main.c*/
 /**
  * struct args_s - contain all arguments
- * @args: arguments and command
+ * @arg: arguments and command
  * @next: value of next structure
  */
 typedef struct args_s
 {
-    char* arg;
-    struct args_s *next;
+	char *arg;
+	struct args_s *next;
 } args_t;
 
 /*list_cmd.c*/

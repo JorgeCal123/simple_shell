@@ -27,6 +27,10 @@ int main(int argc, char **argv, char **env)
 			free(line);
 			break;
 		}
+		else if (_strcmp(line, "env") == 0)
+			print_env(env);
+		else
+		{
 		cpy_line = _strdup(line);
 
 		if (is_directory(cpy_line) == 1)
@@ -35,6 +39,7 @@ int main(int argc, char **argv, char **env)
 			list_path = split_args(cpy_line);
 
 		_execute(list_path, env, is_directory(cpy_line));
+		}
 	free(line);
 	free(list_path);
 	free(cpy_line);

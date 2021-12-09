@@ -20,9 +20,16 @@ int launch(args_t *list_slip, char **env)
 }
 
 /*
-
-int _exit(char **args)
+ * print_env() - Prints the environmental
+ * @env: The current environment from the main function.
+ */
+void print_env(char **env) 
 {
-	return 0;
+	int i;
+
+	for (i = 0; env[i]; i++) 
+	{
+			printf("%s\n",env[i]);
+	}
 }
-*/
+

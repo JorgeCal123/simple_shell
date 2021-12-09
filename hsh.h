@@ -42,4 +42,6 @@ int _strcmp(char *s1, char *s2);
 
 /*more_function.c*/
 int launch(args_t *dir, char **env);
+void print_env(char **env);
+
 #endif

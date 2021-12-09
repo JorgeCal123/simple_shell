@@ -38,6 +38,7 @@ int _execute(args_t *dir, char **env, int type);
 char *_strcat(char *s1, char *s2);
 int _strlen(char *dup);
 char *_strdup(char *src);
+int _strcmp(char *s1, char *s2);
 
 /*more_function.c*/
 int launch(args_t *dir, char **env);

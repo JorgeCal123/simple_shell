@@ -14,12 +14,19 @@ int main(int argc, char **argv, char **env)
 	args_t *list_path;
 
 	char *cpy_line;
+	int state = 1;
 	(void)argc;
 	(void)argv;
 
-	while (1)
+	while (state)
 	{
 		line = read_Line();
+
+		if (_strcmp(line, "exit") == 0)
+		{
+			free(line);
+			break;
+		}
 		cpy_line = _strdup(line);
 
 		if (is_directory(cpy_line) == 1)

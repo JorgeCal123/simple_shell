@@ -9,7 +9,7 @@ int launch(args_t *list_slip, char **env)
 {
 	int state_execve;
 	char **path = NULL;
-
+	
 	path = linkedList_to_doublePointer(&list_slip);
 	state_execve = execve(path[0], path, env);
 
@@ -18,3 +18,11 @@ int launch(args_t *list_slip, char **env)
 	free(path);
 	return (1);
 }
+
+/*
+
+int _exit(char **args)
+{
+	return 0;
+}
+*/

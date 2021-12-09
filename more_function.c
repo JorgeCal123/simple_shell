@@ -27,9 +27,10 @@ void print_env(char **env)
 {
 	int i;
 
-	for (i = 0; env[i]; i++) 
+	while(env[i])
 	{
-			printf("%s\n",env[i]);
+		printf("%s\n", env[i]);
+		i++;
 	}
 }
 

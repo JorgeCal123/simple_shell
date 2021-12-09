@@ -9,7 +9,7 @@ int launch(args_t *list_slip, char **env)
 {
 	int state_execve;
 	char **path = NULL;
-	
+
 	path = linkedList_to_doublePointer(&list_slip);
 	state_execve = execve(path[0], path, env);
 
@@ -19,15 +19,15 @@ int launch(args_t *list_slip, char **env)
 	return (1);
 }
 
-/*
- * print_env() - Prints the environmental
+/**
+ * print_env - Prints the environmental
  * @env: The current environment from the main function.
  */
-void print_env(char **env) 
+void print_env(char **env)
 {
 	int i;
 
-	while(env[i])
+	while (env[i])
 	{
 		printf("%s\n", env[i]);
 		i++;

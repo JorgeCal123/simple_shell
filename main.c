@@ -38,7 +38,6 @@ int main(int argc, char **argv, char **env)
 			list_path = split_path(path, cpy_line);
 		else
 			list_path = split_args(cpy_line);
-			fflush( stdin );
 		_execute(list_path, env, is_directory(cpy_line));
 		free(list_path);
 

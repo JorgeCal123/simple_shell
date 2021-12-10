@@ -20,6 +20,7 @@ int main(int argc, char **argv, char **env)
 
 	while (state)
 	{
+		fflush( stdin );
 		line = read_Line();
 
 		if (_strcmp(line, "exit") == 0)

@@ -111,7 +111,7 @@ int _execute(args_t *dir, char **env, int type)
 			}
 			if (state_execve == -1)
 			{
-				perror("./shell:");
+				perror("./shell");
 				return (-1);
 			}
 		}
@@ -121,7 +121,7 @@ int _execute(args_t *dir, char **env, int type)
 			state_execve = launch(list_slip, env);
 			if (state_execve == -1)
 			{
-				perror("./shell:");
+				perror("./shell");
 				return (-1);
 			}
 		}

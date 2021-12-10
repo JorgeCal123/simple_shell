@@ -40,6 +40,7 @@ int main(int argc, char **argv, char **env)
 
 		_execute(list_path, env, is_directory(cpy_line));
 		free(list_path);
+
 		free(cpy_line);
 
 		}

@@ -18,10 +18,13 @@ int main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 
+	if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, "My_Shell_$ ", 10);
 	do
 	{
-		fflush( stdin );
+
 		line = read_Line();
+		fflush( stdin);
 
 		if (_strcmp(line, "exit") == 0)
 		{

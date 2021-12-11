@@ -18,7 +18,7 @@ int main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 
-	while (state)
+	do
 	{
 		fflush( stdin );
 		line = read_Line();
@@ -45,7 +45,7 @@ int main(int argc, char **argv, char **env)
 
 		}
 	free(line);
-	}
+	}while(state);
 	return (0);
 
 }

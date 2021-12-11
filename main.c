@@ -18,14 +18,12 @@ int main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 
-	if (isatty(STDIN_FILENO))
-		write(STDOUT_FILENO, "My_Shell_$ ", 10);
-	do
+	while (state)
 	{
-
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, "My_Shell_$", 10);
 		line = read_Line();
-		fflush( stdin);
-
+		fflush(stdin);
 		if (_strcmp(line, "exit") == 0)
 		{
 			free(line);
@@ -45,10 +43,8 @@ int main(int argc, char **argv, char **env)
 		free(list_path);
 
 		free(cpy_line);
-
 		}
 	free(line);
-	}while(state);
+	}
 	return (0);
-
 }

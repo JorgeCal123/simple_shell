@@ -7,9 +7,9 @@ char *read_Line()
 {
 	char *line;
 	size_t lineSize = 0;
-
-	write(STDOUT_FILENO, "My_Shell_$ ", 10);
-	fflush(stdin);
+	
+	if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, "My_Shell_$ ", 10);
 
 	if (getline(&line, &lineSize, stdin) == EOF)
 	{
